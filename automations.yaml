@@ -1,0 +1,39 @@
+- id: '1724209634023'
+  alias: Dim lights at midnight
+  description: ''
+  trigger:
+  - platform: time
+    at: '23:59:00'
+  condition:
+  - alias: OR
+    condition: or
+    conditions:
+    - condition: device
+      type: is_on
+      device_id: 3dbfdcd525e74f08c63066163bfc9e91
+      entity_id: 2ab8ae69e950f3878f95b03acefb7463
+      domain: light
+    - condition: device
+      type: is_on
+      device_id: 0d649e2c4f1ee8cc72c078416cef678b
+      entity_id: 0ee3c45aad2ec463dee03187d148671f
+      domain: light
+    - condition: device
+      type: is_on
+      device_id: 73d57996bf8185b75eb7183918927919
+      entity_id: fa415e270ad505029e6b0dea5326fefc
+      domain: light
+    - condition: device
+      type: is_on
+      device_id: 311553dc10636a7d891337609f370c26
+      entity_id: 7cd1b726102dedba9ed90bd1c7277b3e
+      domain: light
+  action:
+  - action: light.turn_on
+    metadata: {}
+    data:
+      brightness_pct: 5
+      transition: 60
+    target:
+      area_id: bedroom
+  mode: single
